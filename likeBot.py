@@ -16,8 +16,9 @@ for tweet in tweepy.Cursor(api.search, q="#luxurybags").items():
 
         api.create_favorite(tweet.id)
         print("I liked @" + tweet.user.screen_name)
-
-        sleep(300)
+        tweet.user.follow()
+        print("followed @" + tweet.user.screen_name)
+        sleep(600)
 
     except tweepy.TweepError as e:
         print(e.reason)
